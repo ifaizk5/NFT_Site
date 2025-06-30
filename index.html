@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT Marketplace</title>
+
+    <link
+      type="image/png"
+      sizes="120x120"
+      rel="icon"
+      href="./assets/icons8-axie-infinity-120.png"
+    />
+
+    <!-- Bootstrap & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      body {
+        font-family: "Work Sans", sans-serif;
+        color: white !important;
+        overflow-x: hidden;
+      }
+
+      nav {
+        font-weight: bold;
+      }
+
+      .nav-link {
+        transition: all 0.3s ease;
+        color: white !important;
+      }
+
+      .nav-link:hover {
+        transform: scale(0.95);
+      }
+
+      .space-mono {
+        font-family: "Space Mono", monospace !important;
+      }
+
+      .work-sans {
+        font-family: "Work Sans", sans-serif !important;
+      }
+
+      .slight-hover {
+        transition: all 0.3s ease;
+        transform: scale(1);
+        cursor: pointer !important;
+      }
+
+      .slight-hover:hover {
+        transition: all 0.3s ease;
+        transform: scale(0.95);
+      }
+
+      .hero-section p {
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-item p:first-child {
+        margin-bottom: 0;
+      }
+
+      .stat-item p:last-child {
+        margin-top: 0.25rem;
+      }
+
+      .cursor-pointer {
+        cursor: pointer !important;
+        transform: scale(1) !important;
+        transition: all 0.2s ease;
+      }
+
+      .cursor-pointer:hover {
+        transform: scale(0.95) !important;
+        transition: all 0.2s ease;
+      }
+
+      .gradient-back {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.85) 20%,
+          rgba(0, 0, 0, 0.5) 50%,
+          rgba(0, 0, 0, 0.2) 80%,
+          rgba(0, 0, 0, 0.05) 95%,
+          rgba(0, 0, 0, 0) 100%
+        );
+
+        z-index: 99;
+      }
+
+      .flex-class {
+        flex: 1 1 calc(25% - 1rem) !important;
+      }
+
+      .custom-card-width {
+        width: 100%;
+      }
+
+      .avatar-wrapper img {
+        height: 85px !important;
+        width: 85px !important;
+      }
+
+      @media (min-width: 1024px) {
+        .custom-card-width {
+          width: 20%;
+        }
+
+        .avatar-wrapper img {
+          height: 160px !important;
+          width: 160px !important;
+        }
+      }
+
+      .art-card {
+        width: 320px;
+        background: linear-gradient(135deg, #4b3f91, #3f5ed7, #62c9e2, #8e56a0);
+        background-size: 400% 400%;
+        animation: gradientShift 10s ease infinite;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .art-image {
+        filter: blur(10px);
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .art-title {
+        background-color: #2c2c2c;
+        color: white;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .gapy-3 {
+        row-gap: 1rem;
+      }
+
+      .w-100vw {
+        width: 100vw !important;
+      }
+
+      .h-100vh {
+        height: 100vh !important;
+      }
+
+      .big-picture {
+        background-image: linear-gradient(
+            to bottom,
+            rgba(162, 89, 255, 0) 0%,
+
+            rgba(162, 89, 255, 1) 100%
+          ),
+          url("https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/nft-highlight@1x.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9; /* Optional: keeps aspect ratio like an image */
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <nav
+      class="navbar navbar-expand-lg position-fixed w-100 gradient-back"
+      style="position: fixed; top: 0; width: 100%"
+    >
+      <div class="container-fluid px-4 py-2">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+          <img loading="lazy" src="./assets/Storefront.webp" alt="LOGO" />
+          <span class="fs-5 text-white">NFT Marketplace</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/burger-menu-@2x.svg"
+            alt="Burger Menu"
+            style="width: 24px; height: 24px"
+          />
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav gap-3 align-items-center">
+            <a class="nav-link active" href="#">Marketplace</a>
+            <a class="nav-link" href="#">Rankings</a>
+            <a class="nav-link" href="#">Connect a wallet</a>
+            <a class="nav-link" href="#">
+              <div class="d-flex align-items-center bg-primary p-3 rounded-4">
+                <img
+                  loading="lazy"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/user@2x.svg"
+                  alt="User"
+                />
+                <span class="ms-2">Signup</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <section class="container work-sans hero-section">
+        <div class="row d-flex align-items-center justify-content-center mt-5">
+          <div class="col-12 col-lg-6 d-flex flex-column gap-4 py-5 py-lg-0">
+            <div class="order-1 order-md-0">
+              <p class="display-5 display-lg-3 fw-bold text-white text-start">
+                Discover Digital Art & Collect NFTs
+              </p>
+            </div>
+            <div class="order-2 order-md-0">
+              <p class="lead text-white fs-5 text-start">
+                NFT marketplace UI created with Anima for Figma. Collect, buy
+                and sell art from more than 20k NFT artists.
+              </p>
+            </div>
+
+            <div class="col-12 col-lg-6 order-3 d-block d-md-none order-md-0">
+              <img
+                loading="lazy"
+                class="img-fluid w-100 w-lg-75"
+                src="./assets/heroanimationtransparentbck-2.webp"
+                alt="Hero animation"
+              />
+            </div>
+
+            <div
+              class="order-4 order-md-0 d-flex justify-content-md-start justify-content-center"
+            >
+              <div
+                class="d-inline-flex align-items-center bg-primary gap-3 p-3 px-5 rounded-4 btn text-white slight-hover"
+              >
+                <img
+                  loading="lazy"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/rocketlaunch@2x.svg"
+                  alt="Rocket Launch"
+                />
+                <span class="fw-semibold">Get Started</span>
+              </div>
+            </div>
+
+            <div class="order-5 order-md-0">
+              <div
+                class="d-flex gap-4 pt-4 align-items-center justify-content-center justify-content-lg-start"
+              >
+                <div class="stat-item">
+                  <p class="fs-3 fw-bold space-mono">240k+</p>
+                  <p class="lead fs-6 w-100">Total Sale</p>
+                </div>
+                <div class="stat-item">
+                  <p class="fs-3 fw-bold space-mono">100k+</p>
+                  <p class="lead fs-6">Auctions</p>
+                </div>
+                <div class="stat-item">
+                  <p class="fs-3 fw-bold space-mono">240k+</p>
+                  <p class="lead fs-6">Artists</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="d-flex justify-content-center justify-content-lg-start">
+              <div
+                class="d-inline-flex align-items-center bg-primary gap-3 p-3 px-5 rounded-4 btn text-white slight-hover"
+              >
+                <img
+                  loading="lazy"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/rocketlaunch@2x.svg"
+                  alt="Rocket Launch"
+                />
+                <span class="fw-semibold">Get Started</span>
+              </div>
+            </div> -->
+
+            <!-- <div
+              class="d-flex gap-4 pt-4 align-items-center justify-content-center justify-content-lg-start"
+            >
+              <div class="stat-item">
+                <p class="fs-3 fw-bold space-mono">240k+</p>
+                <p class="lead fs-6 w-100">Total Sale</p>
+              </div>
+              <div class="stat-item">
+                <p class="fs-3 fw-bold space-mono">100k+</p>
+                <p class="lead fs-6">Auctions</p>
+              </div>
+              <div class="stat-item">
+                <p class="fs-3 fw-bold space-mono">240k+</p>
+                <p class="lead fs-6">Artists</p>
+              </div>
+            </div> -->
+          </div>
+
+          <!-- <div class="col-12 col-lg-6 text-center">
+            <img
+              loading="lazy"
+              class="img-fluid w-100 w-lg-75"
+              src="./assets/heroanimationtransparentbck-2.webp"
+              alt="Hero animation"
+            />
+          </div> -->
+
+          <!-- desktop -->
+          <div class="d-none d-md-block col-12 col-lg-6">
+            <img
+              loading="lazy"
+              class="img-fluid w-100 w-lg-75"
+              src="./assets/heroanimationtransparentbck-2.webp"
+              alt="Hero animation"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="container px-4">
+        <div class="">
+          <div class="d-flex flex-column gap-3">
+            <div>
+              <h1 class="text-center text-md-start">Trending Collection</h1>
+              <p class="text-center text-md-start">
+                Checkout Our Weekly Updated Trending Collection.
+              </p>
+            </div>
+            <div
+              class="row d-flex flex-wrap align-items-center justify-content-center"
+            >
+              <div class="row d-flex flex-wrap">
+                <div class="col-12 my-4 col-lg-4 d-flex flex-column gap-3">
+                  <img
+                    loading="lazy"
+                    class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                    data-id="I1802:8498;1342:12769;1338:12820"
+                    src="./assets/primary-photo-placeholder-1@2x.webp"
+                    alt="Primary Photo Placeholder"
+                    data-hotspot-id="hp-40"
+                  />
+                  <div class="row d-flex space-between">
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="secondary-photo-placeholder-hTkAkG smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12832"
+                        src="./assets/secondary-photo-placeholder@2x.webp"
+                        alt="Secondary Photo Placeholder"
+                        data-hotspot-id="hp-41"
+                      />
+                    </div>
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="secondary-photo-placeholder-Gj9N3Q smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12833"
+                        src="./assets/secondary-photo-placeholder-1@2x.webp"
+                        alt="Secondary Photo Placeholder"
+                        data-hotspot-id="hp-42"
+                      />
+                    </div>
+                    <div
+                      class="col-4 d-flex align-items-center justify-content-center"
+                    >
+                      <p class="fs-3 fw-bold text-center m-0">1025+</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 my-4 col-lg-4 d-flex flex-column gap-3">
+                  <img
+                    loading="lazy"
+                    class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                    data-id="I1802:8498;1342:12769;1338:12820"
+                    src="./assets/primary-photo-placeholder@2x.webp"
+                    alt="Primary Photo Placeholder"
+                    data-hotspot-id="hp-40"
+                  />
+                  <div class="row d-flex space-between">
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12820"
+                        src="./assets/secondary-photo-placeholder-3@2x.webp"
+                        alt="Primary Photo Placeholder"
+                        data-hotspot-id="hp-40"
+                      />
+                    </div>
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12820"
+                        src="./assets/secondary-photo-placeholder-2@2x.webp"
+                        alt="Primary Photo Placeholder"
+                        data-hotspot-id="hp-40"
+                      />
+                    </div>
+                    <div
+                      class="col-4 d-flex align-items-center justify-content-center"
+                    >
+                      <p class="fs-3 fw-bold text-center m-0">1025+</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 my-4 col-lg-4 d-flex flex-column gap-3">
+                  <img
+                    loading="lazy"
+                    class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                    data-id="I1802:8498;1342:12769;1338:12820"
+                    src="./assets/primary-photo-placeholder-5@2x.webp"
+                    alt="Primary Photo Placeholder"
+                    data-hotspot-id="hp-40"
+                  />
+                  <div class="row d-flex space-between">
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12820"
+                        src="./assets/secondary-photo-placeholder-10@2x.webp"
+                        alt="Primary Photo Placeholder"
+                        data-hotspot-id="hp-40"
+                      />
+                    </div>
+                    <div class="col-4">
+                      <img
+                        loading="lazy"
+                        class="primary-photo-placeholder-xdzgXb smart-layers-pointers img-fluid cursor-pointer"
+                        data-id="I1802:8498;1342:12769;1338:12820"
+                        src="./assets/secondary-photo-placeholder-11@2x.webp"
+                        alt="Primary Photo Placeholder"
+                        data-hotspot-id="hp-40"
+                      />
+                    </div>
+                    <div
+                      class="col-4 d-flex align-items-center justify-content-center"
+                    >
+                      <p class="fs-3 fw-bold text-center m-0">1025+</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container my-5">
+        <div
+          class="flex-column flex-md-row d-flex align-items-center justify-content-between px-4"
+        >
+          <div
+            class="d-flex align-items-start justify-content-center flex-column"
+          >
+            <h1 class="text-center text-md-start">Top Creators</h1>
+            <p class="text-center text-md-start">
+              Checkout Top Rated Creators On The Nft Marketplace
+            </p>
+          </div>
+          <div class="">
+            <div
+              class="d-inline-flex align-items-center bg-transparent border border-primary gap-3 p-3 px-5 rounded-4 btn text-white slight-hover"
+            >
+              <img
+                loading="lazy"
+                class="rocket-launch-xx4t1W"
+                data-id="I1647:23898;1326:14284;1424:1798"
+                src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/rocketlaunch-1@2x.svg"
+                alt="RocketLaunch"
+              />
+              <span class="fw-bold">View Rankings</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-md-5 my-4 p-0 d-flex flex-wrap gap-5 align-items-center justify-content-between"
+        >
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-98@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-99@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-98@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-99@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-98@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-99@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-102@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-101@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-102@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-105@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-108@2x.webp "
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card text-white slight-hover position-relative d-flex gap-3 flex-lg-column flex-row px-0 align-items-center justify-content-center px-4 py-3 rounded-4 custom-card-width"
+            style="
+              background-color: #3b3b3b;
+              font-family: 'Work Sans', Helvetica;
+            "
+          >
+            <!-- Rank Number -->
+            <div
+              class="position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+              style="
+                width: 24px;
+                height: 24px;
+                background-color: #1e1e1e;
+                color: #cccccc;
+                font-family: 'Space Mono', monospace;
+                font-size: 16px;
+              "
+            >
+              1
+            </div>
+
+            <!-- Avatar -->
+            <div class="avatar-wrapper my-3">
+              <img
+                loading="lazy"
+                src="./assets/profiles/avatar-placeholder-103@2x.webp"
+                alt="Avatar"
+                class="rounded-circle"
+                style="object-fit: cover; width: 160px; height: 160px"
+              />
+            </div>
+
+            <!-- Name -->
+            <div>
+              <div
+                class="text-center mb-2"
+                style="font-size: 22px; font-weight: 600"
+              >
+                Keepitreal
+              </div>
+
+              <!-- Sales Info -->
+              <div
+                class="d-flex flex-column align-items-center justify-content-center"
+                style="font-family: 'Space Mono', monospace"
+              >
+                <div
+                  class="text-secondary"
+                  style="color: #858584; font-size: 16px"
+                >
+                  Total Sales
+                </div>
+                <div class="text-white" style="font-size: 16px">34.53 ETH</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container my-5">
+        <div class=""><h1>Browse Categories</h1></div>
+        <div class="row gapy-3 align-items-center justify-content-center">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container my-5">
+        <div class="my-5 d-flex align-items-center justify-content-between">
+          <h1>Browse Categories</h1>
+          <div class="">
+            <div
+              class="d-inline-flex align-items-center bg-transparent border border-primary gap-3 p-3 px-5 rounded-4 btn text-white slight-hover"
+            >
+              <img
+                loading="lazy"
+                class="rocket-launch-xx4t1W"
+                data-id="I1647:23898;1326:14284;1424:1798"
+                src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/eye@2x.svg"
+                alt="RocketLaunch"
+              />
+              <span class="fw-bold">See All</span>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center gapy-3">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
+                    alt="MoonDancer Avatar"
+                    class="rounded-circle"
+                    style="width: 2rem; height: 2rem"
+                  />
+                  <p class="mb-0">MoonDancer</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="mb-1">Price</p>
+                    <h4 class="mb-0">1.63 ETH</h4>
+                  </div>
+                  <div>
+                    <p class="mb-1">Highest Bid</p>
+                    <h4 class="mb-0">0.33 wETH</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
+                    alt="MoonDancer Avatar"
+                    class="rounded-circle"
+                    style="width: 2rem; height: 2rem"
+                  />
+                  <p class="mb-0">MoonDancer</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="mb-1">Price</p>
+                    <h4 class="mb-0">1.63 ETH</h4>
+                  </div>
+                  <div>
+                    <p class="mb-1">Highest Bid</p>
+                    <h4 class="mb-0">0.33 wETH</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div
+              class="slight-hover card bg-dark text-white rounded-4 overflow-hidden"
+            >
+              <img
+                src="./assets/discover/distant-galaxy.png"
+                class="img-fluid w-100"
+                alt="Distant Galaxy"
+              />
+              <div class="p-4">
+                <h2 class="fs-4 fw-bold">Distant Galaxy</h2>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                  <img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
+                    alt="MoonDancer Avatar"
+                    class="rounded-circle"
+                    style="width: 2rem; height: 2rem"
+                  />
+                  <p class="mb-0">MoonDancer</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <p class="mb-1">Price</p>
+                    <h4 class="mb-0">1.63 ETH</h4>
+                  </div>
+                  <div>
+                    <p class="mb-1">Highest Bid</p>
+                    <h4 class="mb-0">0.33 wETH</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="w-100vw h-100vh big-picture p-5">
+        <div class="h-50"></div>
+        <div class="row">
+          <div
+            class="col-6 d-flex flex-column gap-3 p-5 align-items-start justify-content-center"
+          >
+            <div class="">
+              <button
+                class="btn bg-black px-4 py-2 rounded-pill d-flex align-items-center justify-content-around gap-3"
+              >
+                <img
+                  class="img-fluid w-25"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
+                  alt=""
+                />
+                <p class="m-0 text-white">Shroomie</p>
+              </button>
+            </div>
+            <div><h1>Magic Mushrooms</h1></div>
+            <div class="">
+              <div
+                class="d-inline-flex align-items-center bg-white border border-primary gap-3 p-3 px-5 rounded-4 btn text-black slight-hover"
+              >
+                <img
+                  loading="lazy"
+                  class="rocket-launch-xx4t1W"
+                  data-id="I1647:23898;1326:14284;1424:1798"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/eye@2x.svg"
+                  alt="RocketLaunch"
+                />
+                <span class="fw-bold">See NFT</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+      </section>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-QT70m0L3BJJ3QGEaWQq4a/OpSp3AZO7I8rL6m7eC6tKBI0R+OfF+ek1Yi1y0FqBI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
