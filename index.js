@@ -1,9 +1,11 @@
-function updateTime() {
+const clock = document.getElementById("time-update");
+
+function timer() {
   const hours = new Date().getHours();
   const minutes = new Date().getMinutes();
   const seconds = new Date().getSeconds();
-  console.log(`${hours}:${minutes}:${seconds}`);
+
+  clock.textContent = `${hours} : ${minutes} : ${seconds}`;
 }
 
-// Call updateTime every 1000 milliseconds (1 second)
-setInterval(updateTime, 1000);
+setInterval(timer, 1000);
