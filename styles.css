@@ -77,27 +77,164 @@ nav {
   flex: 1 1 calc(25% - 1rem) !important;
 }
 
+/* Avatar Card Layouts */
 .custom-card-width {
   width: 100%;
 }
 
-.avatar-wrapper img {
-  height: 85px !important;
-  width: 85px !important;
+/* Rank number positioning */
+.avatar-rank {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  background-color: #1e1e1e;
+  color: #cccccc;
+  font-family: "Space Mono", monospace;
+  font-size: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 
-@media (max-width: 1024px) {
+/* Large screens - Rounded square layout */
+@media (min-width: 992px) {
   .custom-card-width {
-    width: 20%;
+    width: calc(25% - 1rem);
+    min-width: 240px;
+    aspect-ratio: 1;
+    padding: 1.5rem !important;
+  }
+
+  .avatar-card {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .avatar-wrapper {
+    margin: 1rem 0 !important;
   }
 
   .avatar-wrapper img {
-    height: 160px !important;
-    width: 160px !important;
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-    .shroomie {
-      width: 100% !important;
-    }
+  .avatar-info {
+    text-align: center !important;
+  }
+}
+
+/* Medium screens - Horizontal bar layout */
+@media (min-width: 768px) and (max-width: 991px) {
+  .custom-card-width {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem !important;
+  }
+
+  .avatar-card {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+  }
+
+  .avatar-wrapper {
+    margin: 0 1rem 0 0 !important;
+    flex-shrink: 0;
+  }
+
+  .avatar-wrapper img {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .avatar-info {
+    text-align: left !important;
+    flex-grow: 1;
+  }
+
+  .avatar-info .text-center {
+    text-align: left !important;
+  }
+
+  .avatar-info .d-flex {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  .avatar-rank {
+    top: 8px;
+    left: 8px;
+  }
+}
+
+/* Small screens - Horizontal bar layout */
+@media (max-width: 767px) {
+  .custom-card-width {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.75rem !important;
+  }
+
+  .avatar-card {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+  }
+
+  .avatar-wrapper {
+    margin: 0 0.75rem 0 0 !important;
+    flex-shrink: 0;
+  }
+
+  .avatar-wrapper img {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .avatar-info {
+    text-align: left !important;
+    flex-grow: 1;
+  }
+
+  .avatar-info .text-center {
+    text-align: left !important;
+  }
+
+  .avatar-info .d-flex {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  .avatar-name {
+    font-size: 18px !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .sales-label {
+    font-size: 14px !important;
+  }
+
+  .sales-value {
+    font-size: 14px !important;
+  }
+
+  .avatar-rank {
+    top: 6px;
+    left: 6px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
   }
 }
 
