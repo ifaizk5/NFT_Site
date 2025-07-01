@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT Marketplace</title>
+
+    <link
+      type="image/png"
+      sizes="120x120"
+      rel="icon"
+      href="./assets/icons8-axie-infinity-120.png"
+    />
+
+    <!-- Bootstrap & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-black">
+    <nav
+      class="navbar navbar-expand-lg position-fixed w-100 gradient-back"
+      style="position: fixed; top: 0; width: 100%"
+    >
+      <div class="container-fluid px-4 py-2">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+          <img loading="lazy" src="./assets/Storefront.webp" alt="LOGO" />
+          <span class="fs-5 text-white">NFT Marketplace</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/burger-menu-@2x.svg"
+            alt="Burger Menu"
+            style="width: 24px; height: 24px"
+          />
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav gap-3 align-items-center">
+            <a class="nav-link active" href="#">Marketplace</a>
+            <a class="nav-link" href="#">Rankings</a>
+            <a class="nav-link" href="#">Connect a wallet</a>
+            <a class="nav-link" href="#">
+              <div class="d-flex align-items-center bg-primary p-3 rounded-4">
+                <img
+                  loading="lazy"
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/user@2x.svg"
+                  alt="User"
+                />
+                <span class="ms-2">Signup</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <section class="my-5 container-fluid">
+        <div class="row">
+          <div class="col-5 p-0">
+            <img
+              src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/image-placeholder-85@1x.png"
+              alt=""
+            />
+          </div>
+          <div
+            class="col-7 p-0 d-flex flex-column justify-content-center align-items-start gap-3"
+          >
+            <h1>Create Account</h1>
+            <h3>
+              Welcome! Enter Your Details And Start Creating, Collecting And
+              Selling Nfts.
+            </h3>
+          </div>
+        </div>
+      </section>
+      <footer
+        class="container-fluid px-0 bg-dark"
+        style="
+          background: #3b3b3b;
+          color: #fff;
+          font-family: 'Work Sans', Helvetica;
+        "
+      >
+        <div class="container py-5">
+          <div class="row gy-5 gx-4 align-items-start">
+            <!-- NFT Marketplace Info -->
+            <div class="col-12 col-md-5 col-lg-4">
+              <div class="d-flex align-items-center mb-3 gap-2">
+                <img
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/storefront-3@2x.svg"
+                  alt="Storefront"
+                  style="width: 32px; height: 32px"
+                />
+                <span
+                  class="fw-bold"
+                  style="
+                    font-family: 'Space Mono', monospace;
+                    font-size: 1.6rem;
+                    color: #fff;
+                    letter-spacing: 1px;
+                  "
+                  >NFT Marketplace</span
+                >
+              </div>
+              <p class="mb-3" style="color: #cccccc">
+                NFT marketplace UI created with Anima for Figma.
+              </p>
+              <div class="mb-2 fw-semibold" style="color: #fff">
+                Join our community
+              </div>
+              <div class="d-flex gap-3 mb-3">
+                <a href="https://discord.com/invite/eQxkYTNxSp" target="_blank"
+                  ><img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/discordlogo-1@2x.svg"
+                    alt="Discord"
+                    style="width: 28px; height: 28px"
+                /></a>
+                <a
+                  href="https://www.youtube.com/channel/UCXqr0Ca-b73rU9zcpSBJ5cw"
+                  target="_blank"
+                  ><img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/youtubelogo-1@2x.svg"
+                    alt="YouTube"
+                    style="width: 28px; height: 28px"
+                /></a>
+                <a href="https://twitter.com/animaapp?lang=en" target="_blank"
+                  ><img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/twitterlogo-1@2x.svg"
+                    alt="Twitter"
+                    style="width: 28px; height: 28px"
+                /></a>
+                <a
+                  href="https://www.instagram.com/animaapp/?hl=en"
+                  target="_blank"
+                  ><img
+                    src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/instagramlogo-1@2x.svg"
+                    alt="Instagram"
+                    style="width: 28px; height: 28px"
+                /></a>
+              </div>
+            </div>
+            <!-- Explore Links -->
+            <div class="col-12 col-md-3 col-lg-2">
+              <div
+                class="fw-bold mb-3"
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 1.3rem;
+                  color: #fff;
+                "
+              >
+                Explore
+              </div>
+              <ul class="list-unstyled mb-0" style="color: #cccccc">
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none text-reset"
+                    >Marketplace</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none text-reset"
+                    >Rankings</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="text-decoration-none text-reset"
+                    >Connect a wallet</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- Subscribe Widget (Footer) -->
+            <div class="col-12 col-md-12 col-lg-6">
+              <div
+                class="fw-bold mb-3"
+                style="
+                  font-family: 'Space Mono', monospace;
+                  font-size: 1.3rem;
+                  color: #fff;
+                "
+              >
+                Join Our Weekly Digest
+              </div>
+              <p class="mb-3" style="color: #cccccc">
+                Get exclusive promotions &amp; updates straight to your inbox.
+              </p>
+              <form class="w-100" style="max-width: 500px">
+                <div class="d-flex flex-column flex-md-row gap-2 w-100">
+                  <input
+                    type="email"
+                    class="form-control form-control-lg rounded-4 border-0 px-4 py-2 flex-fill"
+                    placeholder="Enter your email here"
+                    required
+                    style="
+                      background: #fff;
+                      color: #3b3b3b;
+                      font-size: 1rem;
+                      min-width: 0;
+                    "
+                  />
+                  <button
+                    type="submit"
+                    class="btn d-flex align-items-center justify-content-center rounded-4 px-4 py-2 fw-semibold text-white"
+                    style="
+                      background: #a259ff;
+                      font-size: 1.1rem;
+                      min-width: 140px;
+                    "
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr class="my-4" style="border-color: #858584; opacity: 0.3" />
+          <div class="row">
+            <div class="col-12">
+              <p class="mb-0 small" style="color: #cccccc; font-size: 0.95rem">
+                <img
+                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/divider-1@1x.svg"
+                  alt="Divider"
+                  style="
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 6px;
+                    vertical-align: middle;
+                  "
+                />
+                Ⓒ NFT Market. Use this template freely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-QT70m0L3BJJ3QGEaWQq4a/OpSp3AZO7I8rL6m7eC6tKBI0R+OfF+ek1Yi1y0FqBI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
