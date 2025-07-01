@@ -86,7 +86,7 @@ nav {
   width: 85px !important;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .custom-card-width {
     width: 20%;
   }
@@ -94,9 +94,16 @@ nav {
   .avatar-wrapper img {
     height: 160px !important;
     width: 160px !important;
+
+    .shroomie {
+      width: 100% !important;
+    }
   }
 }
 
+.shroomie {
+  width: 35% !important;
+}
 .art-card {
   width: 320px;
   background: linear-gradient(135deg, #4b3f91, #3f5ed7, #62c9e2, #8e56a0);
@@ -143,10 +150,6 @@ nav {
   width: 100vw !important;
 }
 
-.h-100vh {
-  height: 100vh !important;
-}
-
 .big-picture {
   background-image: linear-gradient(
       to bottom,
@@ -159,6 +162,6 @@ nav {
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: auto;
+  height: 75vh !important;
   aspect-ratio: 16 / 9; /* Optional: keeps aspect ratio like an image */
 }

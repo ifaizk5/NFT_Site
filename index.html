@@ -315,7 +315,7 @@
           </div>
         </div>
       </section>
-      <section class="container my-5">
+      <section class="`container my-5">
         <div
           class="flex-column flex-md-row d-flex align-items-center justify-content-between px-4"
         >
@@ -1268,44 +1268,91 @@
           </div>
         </div>
       </section>
-      <section class="w-100vw h-100vh big-picture p-5">
-        <div class="h-50"></div>
-        <div class="row">
-          <div
-            class="col-6 d-flex flex-column gap-3 p-5 align-items-start justify-content-center"
-          >
-            <div class="">
-              <button
-                class="btn bg-black px-4 py-2 rounded-pill d-flex align-items-center justify-content-around gap-3"
-              >
-                <img
-                  class="img-fluid w-25"
-                  src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
-                  alt=""
-                />
-                <p class="m-0 text-white">Shroomie</p>
-              </button>
-            </div>
-            <div><h1>Magic Mushrooms</h1></div>
-            <div class="">
+      <section
+        class="my-5 w-100 vh-100 big-picture p-5 d-flex flex-column justify-content-end"
+        style="position: relative"
+      >
+        <div
+          class="d-flex justify-content-between gap-4 flex-column flex-md-row align-items-md-end align-items-center w-100 px-5 pb-5"
+        >
+          <!-- Left Side Content -->
+          <div class="d-inline-flex flex-column gap-4">
+            <!-- Creator Button -->
+            <button
+              class="btn bg-black rounded-pill d-inline-flex align-items-center gap-3 px-4 py-2 shroomie"
+            >
+              <img
+                src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/avatar-placeholder-59@2x.png"
+                alt="Shroomie"
+                style="width: 32px; height: 32px"
+              />
+              <p class="m-0 text-white fw-semibold">Shroomie</p>
+            </button>
+
+            <!-- Title -->
+            <h1 class="text-white display-4 fw-bold text-center text-md-start">
+              Magic Mashrooms
+            </h1>
+
+            <!-- Button -->
+            <div>
               <div
-                class="d-inline-flex align-items-center bg-white border border-primary gap-3 p-3 px-5 rounded-4 btn text-black slight-hover"
+                class="btn bg-white text-black px-5 py-3 rounded-4 d-inline-flex align-items-center gap-3"
               >
                 <img
-                  loading="lazy"
-                  class="rocket-launch-xx4t1W"
-                  data-id="I1647:23898;1326:14284;1424:1798"
                   src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/eye@2x.svg"
-                  alt="RocketLaunch"
+                  alt="Eye Icon"
+                  style="width: 24px; height: 24px"
                 />
                 <span class="fw-bold">See NFT</span>
               </div>
             </div>
           </div>
-          <div class="col-6"></div>
+
+          <!-- Right Side Countdown -->
+          <div
+            class="bg-dark bg-opacity-25 text-white rounded-4 p-2 d-inline-flex flex-column align-items-center justify-content-center text-center gap-2"
+          >
+            <div
+              class="p-3 d-inline-flex flex-column align-items-center justify-content-center"
+            >
+              <p
+                class="d-inline-flex m-0 text-uppercase small justify-content-center"
+              >
+                Auction ends in:
+              </p>
+              <h1
+                id="time-update"
+                class="d-inline-flex justify-content-center m-0 display-5 fw-bold"
+              >
+                59 : 59 : 59
+              </h1>
+              <div
+                class="d-inline-flex justify-content-center gap-4 text-uppercase small"
+              >
+                <span>Hours</span>
+                <span>Minutes</span>
+                <span>Seconds</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
+
+    <script>
+      const clock = document.getElementById("time-update");
+
+      function timer() {
+        const hours = new Date().getHours();
+        const minutes = new Date().getMinutes();
+        const seconds = new Date().getSeconds();
+
+        clock.textContent = `${hours} : ${minutes} : ${seconds}`;
+      }
+
+      setInterval(timer, 1000);
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-QT70m0L3BJJ3QGEaWQq4a/OpSp3AZO7I8rL6m7eC6tKBI0R+OfF+ek1Yi1y0FqBI"
