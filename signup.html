@@ -77,22 +77,162 @@
       </div>
     </nav>
     <div class="d-flex flex-column align-items-center justify-content-center">
-      <section class="my-5 container-fluid">
-        <div class="row">
-          <div class="col-5 p-0">
-            <img
-              src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/image-placeholder-85@1x.png"
-              alt=""
-            />
-          </div>
+      <!-- Create Account Section -->
+      <section
+        class="container-fluid px-0 min-vh-100 d-flex align-items-center justify-content-center"
+        style="background: #232323"
+      >
+        <div class="container-fluid py-5 px-0">
           <div
-            class="col-7 p-0 d-flex flex-column justify-content-center align-items-start gap-3"
+            class="row g-0 rounded-4 overflow-hidden shadow-lg"
+            style="background: transparent !important"
           >
-            <h1>Create Account</h1>
-            <h3>
-              Welcome! Enter Your Details And Start Creating, Collecting And
-              Selling Nfts.
-            </h3>
+            <!-- Left: Image -->
+            <div
+              class="col-12 col-lg-6 d-flex align-items-center justify-content-center p-0 bg-black"
+            >
+              <img
+                src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/image-placeholder-97@1x.png"
+                alt="Create Account Art"
+                class="img-fluid w-100 h-100 rounded-3"
+                style="
+                  object-fit: cover;
+                  min-height: 350px;
+                  min-width: 220px;
+                  max-height: 600px;
+                  background: #181818;
+                "
+              />
+            </div>
+            <!-- Right: Form -->
+            <div
+              class="col-12 col-lg-6 d-flex align-items-center justify-content-start p-4 p-md-5"
+            >
+              <div class="w-100" style="max-width: 440px">
+                <h1
+                  class="fw-bold text-white mb-3"
+                  style="font-size: 2.8rem; font-family: 'Work Sans', Helvetica"
+                >
+                  Create Account
+                </h1>
+                <p
+                  class="text-white mb-4 fs-5"
+                  style="font-family: 'Work Sans', Helvetica"
+                >
+                  Welcome! Enter your details and start creating, collecting and
+                  selling NFTs.
+                </p>
+                <form autocomplete="off">
+                  <div class="mb-3 position-relative">
+                    <span
+                      class="position-absolute top-50 start-0 translate-middle-y ps-3"
+                      style="z-index: 2"
+                    >
+                      <img
+                        src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/user-4@2x.svg"
+                        alt="User"
+                        style="width: 22px; height: 22px"
+                      />
+                    </span>
+                    <input
+                      type="text"
+                      class="form-control form-control-lg rounded-4 ps-5"
+                      placeholder="Username"
+                      required
+                      style="
+                        background: #fff;
+                        color: #3b3b3b;
+                        font-size: 1.1rem;
+                        font-family: 'Work Sans', Helvetica;
+                      "
+                    />
+                  </div>
+                  <div class="mb-3 position-relative">
+                    <span
+                      class="position-absolute top-50 start-0 translate-middle-y ps-3"
+                      style="z-index: 2"
+                    >
+                      <img
+                        src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/envelopesimple-4@2x.svg"
+                        alt="Email"
+                        style="width: 22px; height: 22px"
+                      />
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control form-control-lg rounded-4 ps-5"
+                      placeholder="Email Address"
+                      required
+                      style="
+                        background: #fff;
+                        color: #3b3b3b;
+                        font-size: 1.1rem;
+                        font-family: 'Work Sans', Helvetica;
+                      "
+                    />
+                  </div>
+                  <div class="mb-3 position-relative">
+                    <span
+                      class="position-absolute top-50 start-0 translate-middle-y ps-3"
+                      style="z-index: 2"
+                    >
+                      <img
+                        src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/lockkey@2x.svg"
+                        alt="Password"
+                        style="width: 22px; height: 22px"
+                      />
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control form-control-lg rounded-4 ps-5"
+                      placeholder="Password"
+                      required
+                      style="
+                        background: #fff;
+                        color: #3b3b3b;
+                        font-size: 1.1rem;
+                        font-family: 'Work Sans', Helvetica;
+                      "
+                    />
+                  </div>
+                  <div class="mb-4 position-relative">
+                    <span
+                      class="position-absolute top-50 start-0 translate-middle-y ps-3"
+                      style="z-index: 2"
+                    >
+                      <img
+                        src="https://cdn.animaapp.com/projects/63aaf7e2426e9824f0350c11/releases/63aaf8f2426e9824f0350c13/img/lockkey@2x.svg"
+                        alt="Confirm Password"
+                        style="width: 22px; height: 22px"
+                      />
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control form-control-lg rounded-4 ps-5"
+                      placeholder="Confirm Password"
+                      required
+                      style="
+                        background: #fff;
+                        color: #3b3b3b;
+                        font-size: 1.1rem;
+                        font-family: 'Work Sans', Helvetica;
+                      "
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn w-100 rounded-4 py-3 fw-semibold text-white"
+                    style="
+                      background: #a259ff;
+                      font-size: 1.2rem;
+                      font-family: 'Work Sans', Helvetica;
+                    "
+                  >
+                    Create account
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>
